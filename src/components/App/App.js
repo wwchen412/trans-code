@@ -8,6 +8,7 @@ import GetCode from '../GetCode/GetCode';
 import ChooseService from '../ChooseService/ChooseService';
 import { Toolbar, AppBar, Typography, Button, Link } from '@mui/material';
 import Admin from '../Admin/Admin';
+import Manage from '../Manage/Manage';
 
 
 const theme = createTheme({
@@ -68,7 +69,7 @@ function App() {
         <Route path="getCode" element={<GetCode />} />
         <Route path="choose" element={<ChooseService />} />
         <Route path="admin" element={<Admin />} />
-        {/* <Route path="manage" element={<Manage />} /> */}
+        <Route path="manage" element={<Manage />} />
       </Routes>
        {/* <SignIn /> */}
     </ThemeProvider>

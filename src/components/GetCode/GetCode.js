@@ -3,6 +3,7 @@ import { TableHead, TableBody, TableRow, TableContainer, TableCell, Table, Box, 
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
+import moment from 'moment';
 
 
 function createData(name, value) {
@@ -10,7 +11,7 @@ function createData(name, value) {
 };
 
 const rows = [
-    createData('日期-時間', 159),
+    createData('日期-時間', `${moment('2022-06-25 15:30:00').format('D/MM/YYYY')}`),
     createData('產品', '蝦皮'),
     createData('點數', 2),
     createData('手機號', '0911112345')
