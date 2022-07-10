@@ -10,6 +10,7 @@ import { Toolbar, AppBar, Typography, Button, Link } from '@mui/material';
 import Admin from '../Admin/Admin';
 import Manage from '../Manage/Manage';
 import History from '../History/History';
+import Mange from '../Manage/Manage';
 
 
 const theme = createTheme({
@@ -47,17 +48,25 @@ function App() {
             </Link>
           </Typography>
           <nav>
-            <Link to="choose" component={RouterLink} 
+            <Link to="choose" component={RouterLink} sx={{mx:1}}
             >
               選擇服務
             </Link>
-            <Link to="getCode" component={RouterLink} sx={{mx: 1.5}}
+            <Link to="getCode" component={RouterLink} sx={{mx:1}}
             >
               接碼
             </Link>
-            <Link to="admin" component={RouterLink}
+            <Link to="admin" component={RouterLink} sx={{mx:1}}
             >
               管理員登入
+            </Link>
+            <Link to="manage" component={RouterLink} sx={{mx:1}}
+            >
+              帳號管理
+            </Link>
+            <Link to="history" component={RouterLink} sx={{mx:1}}
+            >
+              交易紀錄管理
             </Link>
           </nav>
           <Button variant="outlined" sx={{ my: 1, mx: 1.5 }} >

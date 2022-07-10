@@ -9,12 +9,12 @@ import { useTheme } from '@mui/material/styles';
 import moment from 'moment';
 
 
-function createData(time, number, product, spentPoint, point, note) {
-    return { time, number, product, spentPoint, point, note };
+function createData(time, number, product, spentPoint, point, note,success) {
+    return { time, number, product, spentPoint, point, note ,success};
 };
 
 const rows = [
-    createData('3/15/2022', 'L232329832', '蝦皮', -2, 65, ''),
+    createData('3/15/2022', 'L232329832', '蝦皮', -2, 65, '',true),
     createData('aa323111', '阿明', 65, 43, 2),
 ];
 const Item = styled(Button)(({ theme }) => ({
@@ -72,6 +72,7 @@ const History = (props) => {
                                     <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>點數變動</TableCell>
                                     <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>可用點數餘額</TableCell>
                                     <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>備註</TableCell>
+                                    <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -90,6 +91,12 @@ const History = (props) => {
                                         <TableCell align="center">{row.spentPoint}</TableCell>
                                         <TableCell align="center">{row.point}</TableCell>
                                         <TableCell align="center">{row.note}</TableCell>
+                                        {row.success &&
+                                        <TableCell align="center">
+                                        <Button variant="outlined">簡訊內容</Button>
+                                    </TableCell>
+                                    }
+                                        
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -104,10 +111,10 @@ const History = (props) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={{ ...modalBoxStyle }}>
-                    <Typography id="modal-modal-title" variant="h5" textAlign="center">
+                    <Typography id="modal-modal-title" variant="h5" textAlign="center" sx={{mb:2}}>
                         點數設定
                     </Typography>
-                    <Typography variant='subtitle1' color="text.secondray">
+                    <Typography variant='subtitle1' color="text.secondray" textAlign="center">
                         會員帳號:aa111 剩餘點數:65
                     </Typography>
                     <Divider />
@@ -134,8 +141,11 @@ const History = (props) => {
 
                         </Box>
                     </Box>
-                    <Button variant="outlined">取消</Button>
-                    <Button variant="contained">送出</Button>
+                    <Box textAlign="center" sx={{my:1.5}}>
+                        <Button variant="outlined" sx={{mx:1}}>取消</Button>
+                        <Button variant="contained" sx={{mx:1}}>送出</Button>
+                    </Box>
+                    
                 </Box>
                 
             </Modal>

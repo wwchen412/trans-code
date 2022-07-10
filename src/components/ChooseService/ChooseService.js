@@ -12,10 +12,10 @@ const GetCode = (props) => {
             <Typography variant="h4" align="center" sx={{m:3}}>選擇服務</Typography>
             <p>會員帳號： aa122</p>
             <Button variant="outlined" sx={{m:2}}>蝦皮(2點)</Button>
-            <Button variant="outlined" sx={{m:2}}>Ｕber(2點)</Button>
-            <Button variant="outlined" sx={{m:2}}>蝦皮(2點)</Button>
-            <Button variant="outlined" sx={{m:2}}>蝦皮(2點)</Button>
-            <Button variant="outlined" sx={{m:2}}>蝦皮(2點)</Button>
+            <Button variant="outlined" sx={{m:2}}>Uber(2點)</Button>
+            <Button variant="outlined" sx={{m:2}}>Google(2點)</Button>
+            <Button variant="outlined" sx={{m:2}}>Line(2點)</Button>
+            <Button variant="outlined" sx={{m:2}}>Foodpanda(2點)</Button>
         </Container>
     )
 };

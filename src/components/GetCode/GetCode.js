@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TableHead, TableBody, TableRow, TableContainer, TableCell, Table, Box, Button } from '@mui/material';
+import { TableHead, TableBody, TableRow, TableContainer, TableCell, Table, Box, Button, Paper } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
@@ -10,15 +10,22 @@ function createData(name, value) {
     return { name, value };
 };
 
+function createTableData(time, num,text,code) {
+    return { time, num,text,code };
+};
 const rows = [
-    createData('日期-時間', `${moment('2022-06-25 15:30:00').format('D/MM/YYYY')}`),
     createData('產品', '蝦皮'),
-    createData('點數', 2),
     createData('手機號', '0911112345')
 ];
+
+const textrows = [
+    createTableData(`${moment('2022-06-25 15:30:00').format('D/MM/YYYY')}`,'202201110011','code:0432422','1'),
+    createTableData(`${moment('2022-06-25 15:30:00').format('D/MM/YYYY')}`,'202201110011','code:0432422','1'),
+]; 
 const GetCode = (props) => {
     const theme = useTheme();
     return (
+        <>
         <Container maxWidth="sm">
             <Box>
                 <Typography variant="h4" color="text.primary" align="center" sx={{ mt: 3,mb:2 }}>接碼服務</Typography>
@@ -52,23 +59,57 @@ const GetCode = (props) => {
                     完成註冊手機號後,請等待簡訊內容接收,確認收到簡訊後再離開此頁面,若超過3分鐘未收到簡訊,也可以按回報錯誤後離開。
                 </Typography>
             </Box>
-            <Box >
+          
+        </Container>
+        <Container>
+              <Box >
                 <Typography variant="subtitle1" color="text.primary" align="center" sx={{ my: 2 }}>
                     簡訊內容：
                 </Typography>
-                <Box sx={{ border: `1px solid ${theme.palette.grey[300]}`, padding: '1rem', background: '#fff'}} borderRadius="8px">
-                    <Box component="p">code:322134</Box>
-                    <Box display="flex" justifyContent="center">
-                        <Button variant="outlined" sx={{mr: 2}}>複製內容</Button>
-                        <Button variant="outlined">回報錯誤</Button>
-                    </Box>
-                </Box>
+                <TableContainer component={Paper} borderRadius="8px" align="center">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>時間</TableCell>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>訂單編號</TableCell>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>簡訊內容</TableCell>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>文字複製</TableCell>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>使用點數</TableCell>
+                                <TableCell align="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>回報錯誤</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {/* time, num,text,cod */}
+                            {textrows.map((row) => (
+                                <TableRow
+                                    hover
+                                    key={row.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                    <TableCell align="center" scope="row">
+                                        {row.time}
+                                    </TableCell>
+                                    <TableCell align="center">{row.num}</TableCell>
+                                    <TableCell align="center">{row.text}</TableCell>
+                                    <TableCell align="center">
+                                        <Button variant="outlined">文字複製</Button>
+                                    </TableCell>
+                                    <TableCell align="center">{row.code}</TableCell>
+                                    <TableCell align="center">
+                                        <Button variant="outlined">回報錯誤</Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </Box>
             <Box textAlign="center">
                 <Box component="p" color={theme.palette.primary.main}>本次使用2點,剩餘98點</Box>
-                <Button variant="contained">完成</Button>
+                <Button variant="contained" sx={{mb:2}}>完成</Button>
             </Box>
         </Container>
+        </>
     )
 };
 
